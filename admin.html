@@ -188,6 +188,10 @@
                                                 <input type="text" class="form-control" id="recipient-name1">
                                                 <label for="recipient-name" class="col-form-label">Photo:</label>
                                                 <input type="file" class="form-control" id="recipient-name2">
+                                              <!-- <label for="recipient-name" class="col-form-label">Pourcentage de
+                                                    réduction:</label>
+                                                <input type="tel" class="form-control" id="recipient-name3pour"
+                                                    pattern="[0-9]{2}" required>--> 
                                                 <label for="recipient-name" class="col-form-label">Prix Promo:</label>
                                                 <input type="tel" class="form-control" id="recipient-name3">
                                                 <label for="recipient-name" class="col-form-label">Prix:</label>
@@ -346,13 +350,13 @@
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyB2nZEqu2xy0RztGRZtVuzdouYDBT5qhE0",
-            authDomain: "henlin-world.firebaseapp.com",
-            databaseURL: "https://henlin-world-default-rtdb.firebaseio.com",
-            projectId: "henlin-world",
-            storageBucket: "henlin-world.appspot.com",
-            messagingSenderId: "671378519174",
-            appId: "1:671378519174:web:934f52906db96caf914d07"
+            apiKey: "AIzaSyCez7nynkWw8hp1YY0xyM6LeM78RStkDUc",
+            authDomain: "johnshop-dce25.firebaseapp.com",
+            databaseURL: "https://johnshop-dce25-default-rtdb.firebaseio.com",
+            projectId: "johnshop-dce25",
+            storageBucket: "johnshop-dce25.appspot.com",
+            messagingSenderId: "61809198671",
+            appId: "1:61809198671:web:a20926860576d523c20c3a"
         };
 
         // Initialize Firebase
@@ -382,6 +386,7 @@
         var genboxprix = document.getElementById("exampleFormControlSelect1");
         var genboxtextarea = document.getElementById("message-text");
         var IdtheNumberMessage = document.getElementById("idtheNumberMessage");
+        var recipientpercent = document.getElementById("recipient-name3pour");
 
 
         var IdEmailMessage = document.getElementById("idEmailMessage");
@@ -440,9 +445,11 @@
 
         function insertData() {
             const idproduct = id()
+
             set(ref(db, "Thedatas/" + idproduct), {
                 Idproduct: idproduct,
                 NameOfstd: namebox.value,
+                //Percent: recipientpercent.value,
                 RollNo: urlImage[0],
                 PrixPromo: secbox.value,
                 Prix: genbox.value,
@@ -456,7 +463,8 @@
                 })
                 .catch((error) => {
                     alert("les données ne sont pas envoyés " + error);
-                });
+                })
+
         }
 
 

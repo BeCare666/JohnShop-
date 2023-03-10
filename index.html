@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Henlin's-World</title>
+  <title>JohnShop</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -456,7 +456,7 @@
                   <i class="fas fa-layer-group"></i>
                 </div>
                 <h4><i class="bi bi-cart-dash-fill" style="color: rgb(0, 255, 76);"></i> Le commerce général</h4>
-                <img src="assets/img/Commerce général.png" alt="" style="width: 73vh; height: 33vh;" id="imServi">
+                <img src="assets/img/Commerce général.png" alt="" style="width: 63vh; height: 33vh;" id="imServi">
                 <hr>
                 <p>Nous faisont du commerce en gros des produits locaux, qui impliquent également l'achat et
                   la vente de produits en vrac à des revendeurs
@@ -470,7 +470,7 @@
                   <i class="fas fa-database"></i>
                 </div>
                 <h4><i class="bi bi-cart-dash-fill" style="color: rgb(0, 255, 76);"></i> Livraison </h4>
-                <img src="assets/img/livraison910.jpg" alt="" style="width: 73vh; height: 33vh;" id="imServi">
+                <img src="assets/img/livraison910.jpg" alt="" style="width: 63vh; height: 33vh;" id="imServi">
                 <hr>
                 <p>Nous faisons de la livraison rapide de vos produits après achat via notre plateforme. Comme la
                   livraison le jour même, le
@@ -601,20 +601,21 @@
                         <li id="idmydatail2"></li>
                         <li id="idmydatail3"></li>
                         <li id="idmydatail4"></a></li>
-                       
+
                         <label for="recipient-name" class="col-form-label">Quantité:</label>
                         <select id="exampleFormControlSelect1" class="form-control" style="height: 50px;">
-                          <option value="1" selected>1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
+                          <option value="1" selected class="quantityVal">1</option>
+                          <option value="2" class="quantityVal">2</option>
+                          <option value="3" class="quantityVal">3</option>
+                          <option value="4" class="quantityVal">4</option>
+                          <option value="5" class="quantityVal">5</option>
+                          <option value="6" class="quantityVal">6</option>
+                          <option value="7" class="quantityVal">7</option>
+                          <option value="8" class="quantityVal">8</option>
+                          <option value="9" class="quantityVal">9</option>
+                          <option value="10" class="quantityVal">10</option>
                         </select><br>
+                        <button class="btn btn-danger " id="myClasidpayerq">validez la Quantité</button><br><br>
                         <li id="idmydatail6" class="myClasidpayer"></li>
                       </ul>
                     </div>
@@ -750,13 +751,13 @@
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
-      apiKey: "AIzaSyB2nZEqu2xy0RztGRZtVuzdouYDBT5qhE0",
-      authDomain: "henlin-world.firebaseapp.com",
-      databaseURL: "https://henlin-world-default-rtdb.firebaseio.com",
-      projectId: "henlin-world",
-      storageBucket: "henlin-world.appspot.com",
-      messagingSenderId: "671378519174",
-      appId: "1:671378519174:web:934f52906db96caf914d07"
+      apiKey: "AIzaSyCez7nynkWw8hp1YY0xyM6LeM78RStkDUc",
+      authDomain: "johnshop-dce25.firebaseapp.com",
+      databaseURL: "https://johnshop-dce25-default-rtdb.firebaseio.com",
+      projectId: "johnshop-dce25",
+      storageBucket: "johnshop-dce25.appspot.com",
+      messagingSenderId: "61809198671",
+      appId: "1:61809198671:web:a20926860576d523c20c3a"
     };
 
     // Initialize Firebase
@@ -910,11 +911,12 @@
               `
             <div class=" portfolio-item filter-app style="height: 72vh; " >
             <div class="portfolio-wrap">
+              <div id="kahetartprin">
+              <span id="kahetart" style="cursor: pointer; display:none;"><button class="btn btn-primary"><img src="assets/img/heart.svg" alt="">&nbsp; -${k.Percent} %</button></span>
+              </div> 
               <img src="${k.RollNo}" class="img-fluid" alt="" style="height: 42vh; width: 50vh;">
-              <div class="portfolio-links">
-                
-                <button class="btn btn-primary" id="${k.Idproduct}" href="#modal" data-bs-toggle="modal" onclick="testerSiLa(this.id)">En savoir plus</button>
-                
+              <div class="portfolio-links">               
+              <button class="btn btn-primary" id="${k.Idproduct}" href="#modal" data-bs-toggle="modal" onclick="testerSiLa(this.id)">En savoir plus</button>              
               </div>
               <div class="portfolio-info" style="background-color: rgba(238, 19, 19, 0.507);">
                 <h4>${k.NameOfstd}</h4>
@@ -985,6 +987,12 @@
 
     //funcion to pay for kkiapay
     //Table to take price paiemen
+    var exampleFormControltable = []
+    document.getElementById('myClasidpayerq').addEventListener('click', function () {
+      var exampleFormControlSelect1v = document.getElementById('exampleFormControlSelect1').value
+      exampleFormControltable.push(exampleFormControlSelect1v)
+
+    })
     var MyClasidpayer = document.querySelectorAll('.myClasidpayer');
     var exampleFormControlSelect1v = document.getElementById('exampleFormControlSelect1').value
     MyClasidpayer.forEach((x) => {
@@ -994,9 +1002,10 @@
         console.log(exampleFormControlSelect1v)
         get(child(dbref, "Thedatas/" + lastkkiapay))
           .then((snapshot) => {
-            if (snapshot.exists()) {
+            var lastelement = exampleFormControltable[exampleFormControltable.length - 1]
+            if (snapshot.exists() && lastelement) {
               openKkiapayWidget({
-                amount: `${snapshot.val().PrixPromo}`,
+                amount: `${snapshot.val().PrixPromo * lastelement}`,
                 position: "center",
                 callback: "javascript:sendmycommandinCentremodale()",
                 data: "",
@@ -1036,7 +1045,7 @@
                 }
               });
             } else {
-              alert("no data");
+              alert("validez la quantité de votre prouit");
             }
           })
           .catch((error) => {
