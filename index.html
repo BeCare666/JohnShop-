@@ -100,7 +100,7 @@
       <div class="row gy-4">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <h1 style="color: white;">Nos clients, nos valeurs </h1><br><br>
-          <h5 style="color: white;">Nous sommes à votre service dans le commerce général et la promotion des produits importées et
+          <h5 style="color: white;">Nous sommes à votre service dans le commerce général et la promotion des produits importés et
             locaux.</h5>
           <div>
             <a href="#about" class="btn-get-started scrollto">Commencer</a>
@@ -615,7 +615,10 @@
                           <option value="9" class="quantityVal">9</option>
                           <option value="10" class="quantityVal">10</option>
                         </select><br>
-                        <button class="btn btn-danger " id="myClasidpayerq">validez la Quantité</button><br><br>
+                         <div style="display: flex;">
+                          <button class="btn btn-danger " id="myClasidpayerq">validez la Quantité</button> &nbsp; <div></div>
+                          <strong id="unpcreer"></strong>
+                         </div><br><br>
                         <li id="idmydatail6" class="myClasidpayer"></li>
                       </ul>
                     </div>
@@ -894,6 +897,10 @@
 
     //function to get all products in realTime
     function getAllDataRealtimePro() {
+      document.getElementById('myClasidpayerq').style.display = 'none'
+      document.getElementById('exampleFormControlSelect1').addEventListener('click', function(){
+        document.getElementById('myClasidpayerq').style.display = 'block'
+      })
       var myalldatas = [];
       const dbref = ref(db, "Thedatas/");
       onValue(dbref, (snopshot) => {
@@ -991,6 +998,10 @@
     document.getElementById('myClasidpayerq').addEventListener('click', function () {
       var exampleFormControlSelect1v = document.getElementById('exampleFormControlSelect1').value
       exampleFormControltable.push(exampleFormControlSelect1v)
+      document.getElementById('unpcreer').innerHTML = `Quantité validée`
+      setTimeout(()=>{
+        document.getElementById('unpcreer').style.display = 'none'
+      },1000)
 
     })
     var MyClasidpayer = document.querySelectorAll('.myClasidpayer');
